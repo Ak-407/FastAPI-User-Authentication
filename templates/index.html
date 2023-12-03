@@ -1,0 +1,143 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sucess</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+
+
+
+
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">IUST</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="University" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+    <form action="/afterlogin" method="post">
+  <fieldset style="padding:40px 100px 100px 100px ">
+    <h1>College  Student  Data</h1>
+      <br>
+
+    <div class="mb-3">
+      <label for="TextInput" class="form-label">Name</label>
+      <input type="text" id="TextInput" name="name" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="TextInput" class="form-label">Department</label>
+      <input type="text" id="TextInput2" name="department" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="TextInput" class="form-label">Roll Number</label>
+      <input type="text" id="TextInput3" name="roll_number" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+
+
+
+
+
+
+
+<div class="container" style="text-align: center">
+  <h1>Student Records</h1>
+  <br>
+  <br>
+    <div>
+      {% for student in students %}
+      <h4><span style="color: red">Name</span>  :  {{ student.name }}</h4>
+      <h4><span style="color: red">Department </span>:  {{ student.department }}</h4>
+      <h4><span style="color: red">Roll Number </span> :  {{ student.roll_number }}</h4>
+
+      <!-- Add Edit and Delete buttons -->
+      <!-- Update the edit form in your HTML template -->
+        <br>
+<form action="/edit" method="post" style="display: inline;">
+    <input type="hidden" name="student_id" value="{{ student.id }}">
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="{{ student.name }}">
+    <label for="department">Department:</label>
+    <input type="text" name="department" value="{{ student.department }}">
+    <label for="roll_number">Roll Number:</label>
+    <input type="text" name="roll_number" value="{{ student.roll_number }}">
+    <button type="submit" class="btn btn-warning">Edit</button>
+</form>
+
+
+      <form action="/delete" method="post" style="display: inline;">
+        <input type="hidden" name="student_id" value="{{ student.id }}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+
+      <br>
+      <hr>
+      <br>
+      {% endfor %}
+    </div>
+</div>
+
+
+
+
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</html>
